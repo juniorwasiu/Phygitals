@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Worker task instructions, referral code, completion steps and required proof.">
+<title>Worker Task — App Registration</title>
+<style>
+:root{
+  --bg:#0b0d14; --panel:#151824; --panel2:#1b1f2d; --text:#f7f8fb;
+  --muted:#aeb5c7; --accent:#8b7cff; --accent2:#6d5dfc; --green:#35d49a;
+  --border:rgba(255,255,255,.09); --shadow:0 24px 70px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  color:var(--text); background:
+  radial-gradient(circle at 10% 0%,rgba(139,124,255,.18),transparent 32%),
+  radial-gradient(circle at 90% 15%,rgba(53,212,154,.10),transparent 28%),var(--bg);
+  line-height:1.6;
+}
+.container{width:min(1100px,92%);margin:auto}
+nav{display:flex;justify-content:space-between;align-items:center;padding:24px 0}
+.logo{font-weight:900;letter-spacing:-.04em;font-size:1.2rem}
+.logo span{color:var(--accent)}
+nav a{color:var(--muted);text-decoration:none;margin-left:22px;font-size:.92rem}
+nav a:hover{color:#fff}
+.hero{padding:64px 0 42px;text-align:center}
+.badge{
+  display:inline-flex;align-items:center;gap:8px;padding:8px 13px;border:1px solid var(--border);
+  background:rgba(139,124,255,.1);border-radius:999px;color:#d9d5ff;font-size:.82rem;font-weight:700;
+}
+.badge:before{content:"";width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 16px var(--green)}
+h1{font-size:clamp(2.5rem,7vw,5.2rem);line-height:.98;letter-spacing:-.065em;margin:22px auto 20px;max-width:900px}
+.hero p{max-width:700px;margin:auto;color:var(--muted);font-size:1.08rem}
+.notice{
+  margin:36px auto 0; max-width:850px; padding:20px 22px; text-align:left;
+  background:linear-gradient(135deg,rgba(255,193,7,.12),rgba(255,193,7,.04));
+  border:1px solid rgba(255,193,7,.28); border-radius:18px;
+}
+.notice strong{color:#ffd76b}
+.notice p{margin:6px 0 0;font-size:.95rem}
+.cta-row{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:30px}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;border:0;text-decoration:none;
+  padding:13px 18px;border-radius:13px;font-weight:800;cursor:pointer;font-size:.95rem;
+  transition:.2s transform,.2s box-shadow,.2s background;
+}
+.btn:hover{transform:translateY(-2px)}
+.primary{color:#fff;background:linear-gradient(135deg,var(--accent),var(--accent2));box-shadow:0 12px 30px rgba(109,93,252,.25)}
+.secondary{color:#fff;background:var(--panel2);border:1px solid var(--border)}
+section{padding:38px 0}
+.section-title{font-size:2rem;letter-spacing:-.04em;margin:0 0 8px}
+.section-sub{color:var(--muted);margin:0 0 25px}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.card{
+  background:linear-gradient(180deg,rgba(255,255,255,.045),rgba(255,255,255,.018));
+  border:1px solid var(--border);border-radius:22px;padding:25px;box-shadow:var(--shadow);
+}
+.step{display:flex;gap:17px}
+.num{
+  flex:0 0 42px;height:42px;border-radius:13px;display:grid;place-items:center;
+  background:rgba(139,124,255,.13);border:1px solid rgba(139,124,255,.25);color:#cfcaff;font-weight:900
+}
+.card h3{margin:0 0 7px;font-size:1.08rem}
+.card p{margin:0;color:var(--muted)}
+.code-card{grid-column:1/-1;text-align:center}
+.code{
+  display:inline-flex;align-items:center;gap:10px;margin:15px 0 7px;padding:14px 18px;border-radius:14px;
+  background:#0c0e15;border:1px dashed rgba(139,124,255,.55);font:800 1.15rem/1 ui-monospace,SFMono-Regular,Menlo,monospace;
+  letter-spacing:.04em
+}
+.copy{border:0;background:var(--accent);color:#fff;padding:8px 11px;border-radius:9px;font-weight:800;cursor:pointer}
+.linkbox{display:flex;gap:10px;align-items:center;margin-top:14px}
+.linkbox a{color:#c9c4ff;word-break:break-all}
+.checklist{display:grid;gap:12px}
+.check{
+  display:flex;gap:12px;align-items:flex-start;padding:16px;border-radius:15px;background:rgba(255,255,255,.035);
+  border:1px solid var(--border)
+}
+.check span{width:24px;height:24px;flex:0 0 24px;border-radius:7px;background:rgba(53,212,154,.13);color:var(--green);display:grid;place-items:center;font-weight:900}
+.warning{border-color:rgba(255,92,92,.25);background:rgba(255,92,92,.06)}
+.warning span{background:rgba(255,92,92,.12);color:#ff8d8d}
+footer{padding:40px 0 55px;color:#737b8f;text-align:center;font-size:.88rem}
+@media(max-width:760px){nav a{display:none}.hero{padding-top:35px}.grid{grid-template-columns:1fr}.code-card{grid-column:auto}.linkbox{align-items:flex-start;flex-direction:column}}
+</style>
+</head>
+<body>
+<div class="container">
+<nav>
+  <div class="logo">Task<span>Guide</span></div>
+  <div><a href="#steps">Steps</a><a href="#proof">Proof</a></div>
+</nav>
+
+<header class="hero">
+  <div class="badge">Worker task instructions</div>
+  <h1>Complete the app registration task correctly.</h1>
+  <p>Follow every step below so your task can be verified without unnecessary delays.</p>
+
+  <div class="notice">
+    <strong>⚠️ IMPORTANT — VPN / LOCATION REQUIREMENT</strong>
+    <p>If the task provider explicitly requires a U.S. or Germany connection and permits VPN use, connect to an approved VPN server in <b>USA or Germany</b> before starting the task. Do not use a VPN to bypass a provider's eligibility, location, or verification rules.</p>
+  </div>
+
+  <div class="cta-row">
+    <a class="btn primary" href="https://phygitals.onelink.me/1HmK/ixhzimzk" target="_blank" rel="noopener">Open App Download Link ↗</a>
+    <a class="btn secondary" href="#steps">View Instructions ↓</a>
+  </div>
+</header>
+
+<section id="steps">
+  <h2 class="section-title">What is expected from workers?</h2>
+  <p class="section-sub">Complete the steps in order.</p>
+
+  <div class="grid">
+    <div class="card step"><div class="num">1</div><div><h3>Download from the provided link</h3><p>Use only the link below to download the app from the App Store.</p></div></div>
+    <div class="card step"><div class="num">2</div><div><h3>Open the task link</h3><p>Visit the provided link and continue with the registration instructions.</p><div class="linkbox"><a href="https://phygitals.onelink.me/1HmK/ixhzimzk" target="_blank" rel="noopener">phygitals.onelink.me/1HmK/ixhzimzk ↗</a></div></div></div>
+    <div class="card step"><div class="num">3</div><div><h3>Register with Gmail</h3><p>Register using Gmail, open the Rewards tab, and apply the referral code shown below.</p></div></div>
+    <div class="card step"><div class="num">4</div><div><h3>Use the referral code</h3><p>Enter the exact code below in the Rewards tab.</p></div></div>
+
+    <div class="card code-card">
+      <h3>Your referral code</h3>
+      <div class="code"><span id="code">e406a482d8da</span><button class="copy" onclick="copyCode()">Copy</button></div>
+      <p id="copied" style="color:var(--green);min-height:24px"></p>
+    </div>
+
+    <div class="card step"><div class="num">5</div><div><h3>Make sure the code is applied</h3><p>The referral code should appear as successfully applied/green in the Rewards tab. This is how progress can be tracked.</p></div></div>
+    <div class="card step"><div class="num">6</div><div><h3>New users only</h3><p>Make sure you are a new user to the app and have not already registered an account.</p></div></div>
+    <div class="card step"><div class="num">7</div><div><h3>Referral bonus</h3><p>The task instructions state that you will receive a $1 bonus for using the referral code to create your account.</p></div></div>
+  </div>
+</section>
+
+<section id="proof">
+  <h2 class="section-title">Required proof of completion</h2>
+  <p class="section-sub">Prepare these items after finishing the task.</p>
+  <div class="card checklist">
+    <div class="check"><span>✓</span><div><b>App Store download screenshot</b><br><small>Screenshot showing that you downloaded the app from the App Store.</small></div></div>
+    <div class="check"><span>✓</span><div><b>Email address used</b><br><small>Enter the email address you used to register, as required by the task.</small></div></div>
+    <div class="check"><span>✓</span><div><b>Rewards-tab screenshot</b><br><small>Show the referral code applied in the Rewards tab. The supplied instructions say it should appear green when successfully applied.</small></div></div>
+    <div class="check"><span>✓</span><div><b>$1 bonus screenshot</b><br><small>Screenshot showing the $1 bonus received for using the referral.</small></div></div>
+  </div>
+</section>
+
+<section>
+  <div class="card warning">
+    <div class="step">
+      <div class="num">!</div>
+      <div><h3>Before you submit proof</h3><p>Check that screenshots are readable and that the referral code is visible where required. Avoid sharing unrelated personal information in screenshots.</p></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Follow the task provider's current terms, eligibility rules, and verification requirements.
+</footer>
+</div>
+
+<script>
+function copyCode(){
+  const code=document.getElementById('code').textContent;
+  navigator.clipboard.writeText(code).then(()=>{
+    document.getElementById('copied').textContent='Code copied to clipboard.';
+    setTimeout(()=>document.getElementById('copied').textContent='',1800);
+  });
+}
+</script>
+</body>
+</html>
